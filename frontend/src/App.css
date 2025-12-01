@@ -1,0 +1,153 @@
+/* Custom styles for the VoiceChat component */
+body {
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Agent Speaking Indicator (subtle visual cue on the entire page) */
+body.agent-speaking {
+  background-color: #e6f7ff; /* Light blue tint when agent is speaking */
+  transition: background-color 0.5s ease-in-out;
+}
+
+.voice-chat-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.status.disconnected, .status.failed {
+  background-color: #fcebeb;
+  color: #c9302c;
+}
+
+.status.connecting {
+  background-color: #fffbe6;
+  color: #e09300;
+}
+
+.status.connected {
+  background-color: #e9f7ef;
+  color: #449d44;
+}
+
+.transcript-log {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  padding: 8px 12px;
+  border-radius: 18px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: #007bff;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message.agent {
+  align-self: flex-start;
+  background-color: #e0e0e0;
+  color: #333;
+  border-bottom-left-radius: 4px;
+}
+
+.message.system {
+  align-self: center;
+  font-style: italic;
+  font-size: 0.8em;
+  color: #999;
+  padding: 0;
+  background: none;
+  max-width: 100%;
+}
+
+.message .sender {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.message.agent .sender {
+    color: #007bff; /* Highlight AI name */
+}
+
+.message.user .sender {
+    color: white; /* Keep user name white */
+}
+
+.controls {
+  text-align: center;
+}
+
+.mic-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mic-indicator .icon {
+  font-size: 48px;
+  color: #007bff;
+  transition: transform 0.3s ease;
+}
+
+/* Animation for mic icon when agent is speaking */
+body.agent-speaking .mic-indicator .icon {
+    transform: scale(1.1);
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        color: #007bff;
+    }
+    to {
+        transform: scale(1.2);
+        color: #0056b3;
+    }
+}
